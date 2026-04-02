@@ -168,8 +168,54 @@ function terminSpeichern() {
 }
 
 
+// ===== LOGIN =====
+
+const LOGIN_BENUTZER = 'lucas';
+const LOGIN_PASSWORT = 'wochende123';
+
+function initLogin() {
+  const form = document.getElementById('loginForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const benutzername = document.getElementById('loginBenutzername').value.trim();
+    const passwort = document.getElementById('loginPasswort').value;
+    const fehler = document.getElementById('loginFehler');
+
+    if (benutzername === LOGIN_BENUTZER && passwort === LOGIN_PASSWORT) {
+      sessionStorage.setItem('eingeloggt', 'true');
+      window.location.href = 'index.html';
+    } else {
+      fehler.classList.add('sichtbar');
+    }
+  });
+}
+
+function initAbmelden() {
+  const btn = document.getElementById('btnAbmelden');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    sessionStorage.removeItem('eingeloggt');
+    window.location.href = 'login.html';
+  });
+}
+
+function pruefLogin() {
+  const istLoginSeite = !!document.getElementById('loginForm');
+  const eingeloggt = sessionStorage.getItem('eingeloggt') === 'true';
+
+  if (!istLoginSeite && !eingeloggt) {
+    window.location.href = 'login.html';
+  }
+}
+
+
 // ===== INITIALISIERUNG =====
 document.addEventListener('DOMContentLoaded', () => {
+  pruefLogin();
+  initLogin();
+  initAbmelden();
   initSlider();
   initKalender();
 });
