@@ -112,12 +112,21 @@ function renderKalender() {
     html += `
       <div class="kalender-tag ${istHeute ? 'heute' : ''}" data-datum="${datumStr}">
         <div class="tag-nummer">${tag}</div>
-        ${tagesTermine.map(t => `<div class="termin-marker" title="${t.zeit ? t.zeit + ' – ' : ''}${t.titel}">${t.titel}</div>`).join('')}
+        ${tagesTermine.map(t => `<div class="termin-marker" data-index="${termine.indexOf(t)}">${t.titel}</div>`).join('')}
       </div>
     `;
   }
 
   kalenderTage.innerHTML = html;
+
+  // Klick auf Termin-Marker öffnet Detail-Modal
+  document.querySelectorAll('.termin-marker').forEach(marker => {
+    marker.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const index = parseInt(marker.dataset.index);
+      oeffneDetailModal(index);
+    });
+  });
 
   // Klick auf einen Tag öffnet Modal mit vorbefülltem Datum
   document.querySelectorAll('.kalender-tag:not(.leer)').forEach(tag => {
@@ -125,6 +134,30 @@ function renderKalender() {
       oeffneModal(tag.dataset.datum);
     });
   });
+}
+
+let aktiverTerminIndex = null;
+
+function oeffneDetailModal(index) {
+  const termin = termine[index];
+  aktiverTerminIndex = index;
+
+  document.getElementById('detailTitel').textContent = termin.titel;
+  document.getElementById('detailDatum').textContent = 'Datum: ' + termin.datum;
+  document.getElementById('detailZeit').textContent = termin.zeit ? 'Uhrzeit: ' + termin.zeit : '';
+
+  const overlay = document.getElementById('detailModalOverlay');
+  overlay.classList.add('active');
+
+  document.getElementById('btnDetailSchliessen').onclick = () => overlay.classList.remove('active');
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.classList.remove('active'); };
+
+  document.getElementById('btnAbsagen').onclick = () => {
+    termine.splice(aktiverTerminIndex, 1);
+    localStorage.setItem('termine', JSON.stringify(termine));
+    overlay.classList.remove('active');
+    renderKalender();
+  };
 }
 
 function oeffneModal(datum) {
@@ -251,7 +284,11 @@ function aktivitaetSpeichern() {
 // ===== LOGIN =====
 
 const LOGIN_BENUTZER = 'lucas';
-const LOGIN_PASSWORT = 'wochende123';
+const LOGIN_PASSWORT_DEFAULT = 'wochende123';
+
+function getPasswort() {
+  return localStorage.getItem('passwort') || LOGIN_PASSWORT_DEFAULT;
+}
 
 function initLogin() {
   const form = document.getElementById('loginForm');
@@ -263,12 +300,44 @@ function initLogin() {
     const passwort = document.getElementById('loginPasswort').value;
     const fehler = document.getElementById('loginFehler');
 
-    if (benutzername === LOGIN_BENUTZER && passwort === LOGIN_PASSWORT) {
+    if (benutzername === LOGIN_BENUTZER && passwort === getPasswort()) {
       sessionStorage.setItem('eingeloggt', 'true');
       window.location.href = 'index.html';
     } else {
       fehler.classList.add('sichtbar');
     }
+  });
+
+  // Passwort vergessen
+  document.getElementById('btnPasswortVergessen').addEventListener('click', () => {
+    document.getElementById('passwortReset').classList.toggle('sichtbar');
+    document.getElementById('neuesPasswort').value = '';
+    document.getElementById('resetFehler').classList.remove('sichtbar');
+    document.getElementById('resetErfolg').classList.remove('sichtbar');
+  });
+
+  document.getElementById('btnResetAbbrechen').addEventListener('click', () => {
+    document.getElementById('passwortReset').classList.remove('sichtbar');
+  });
+
+  document.getElementById('btnResetSpeichern').addEventListener('click', () => {
+    const neuesPasswort = document.getElementById('neuesPasswort').value;
+    const fehler = document.getElementById('resetFehler');
+    const erfolg = document.getElementById('resetErfolg');
+
+    if (!neuesPasswort) {
+      fehler.classList.add('sichtbar');
+      return;
+    }
+
+    fehler.classList.remove('sichtbar');
+    localStorage.setItem('passwort', neuesPasswort);
+    erfolg.classList.add('sichtbar');
+
+    setTimeout(() => {
+      document.getElementById('passwortReset').classList.remove('sichtbar');
+      erfolg.classList.remove('sichtbar');
+    }, 2000);
   });
 }
 

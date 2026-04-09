@@ -54,10 +54,14 @@ header {
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
 }
 
 nav {
@@ -445,6 +449,33 @@ main {
   background: var(--border);
 }
 
+.btn-absagen {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+  background: #fee2e2;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+}
+
+.btn-absagen:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+.detail-datum,
+.detail-zeit {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
 /* ===== Inspirationen-Seite ===== */
 .inspirationen-header {
   display: flex;
@@ -650,6 +681,77 @@ main {
   background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+}
+
+.btn-passwort-vergessen {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.btn-passwort-vergessen:hover {
+  color: var(--primary);
+}
+
+.passwort-reset {
+  display: none;
+  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.passwort-reset.sichtbar {
+  display: block;
+}
+
+.passwort-reset h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.reset-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-abbrechen-reset {
+  flex: 1;
+  padding: 0.75rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-abbrechen-reset:hover {
+  background: var(--border);
+}
+
+.reset-erfolg {
+  display: none;
+  color: #16a34a;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.reset-erfolg.sichtbar {
+  display: block;
 }
 
 /* ===== Footer ===== */

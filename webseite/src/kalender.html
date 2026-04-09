@@ -10,7 +10,7 @@
 
   <!-- Header -->
   <header>
-    <div class="logo">Wochend-Planer</div>
+    <a href="index.html" class="logo"><img src="../img/logo.png" alt="Wochend-Planer Logo"></a>
     <nav>
       <a href="index.html">Startseite</a>
       <a href="kalender.html" class="active">Kalender</a>
@@ -49,6 +49,19 @@
     </div>
 
   </main>
+
+  <!-- Modal: Termin Detail / Absagen -->
+  <div class="modal-overlay" id="detailModalOverlay">
+    <div class="modal">
+      <h3 id="detailTitel"></h3>
+      <p class="detail-datum" id="detailDatum"></p>
+      <p class="detail-zeit" id="detailZeit"></p>
+      <div class="modal-buttons">
+        <button class="btn-abbrechen" id="btnDetailSchliessen">Schliessen</button>
+        <button class="btn-absagen" id="btnAbsagen">Absagen</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal: Termin hinzufügen -->
   <div class="modal-overlay" id="modalOverlay">

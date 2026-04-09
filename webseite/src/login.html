@@ -10,7 +10,7 @@
 
   <!-- Header -->
   <header>
-    <div class="logo">Wochend-Planer</div>
+    <div class="logo"><img src="../img/logo.png" alt="Wochend-Planer Logo"></div>
   </header>
 
   <!-- Login -->
@@ -32,7 +32,24 @@
         <p class="login-fehler" id="loginFehler">Benutzername oder Passwort falsch.</p>
 
         <button type="submit" class="btn-login">Einloggen</button>
+
+        <button type="button" class="btn-passwort-vergessen" id="btnPasswortVergessen">Passwort vergessen?</button>
       </form>
+
+      <!-- Passwort zurücksetzen -->
+      <div class="passwort-reset" id="passwortReset">
+        <h3>Neues Passwort festlegen</h3>
+        <div class="form-group">
+          <label for="neuesPasswort">Neues Passwort</label>
+          <input type="password" id="neuesPasswort" placeholder="Neues Passwort eingeben">
+        </div>
+        <p class="login-fehler" id="resetFehler">Bitte ein Passwort eingeben.</p>
+        <div class="reset-buttons">
+          <button type="button" class="btn-abbrechen-reset" id="btnResetAbbrechen">Abbrechen</button>
+          <button type="button" class="btn-login" id="btnResetSpeichern">Speichern</button>
+        </div>
+        <p class="reset-erfolg" id="resetErfolg">Passwort wurde gespeichert!</p>
+      </div>
     </div>
   </main>
 
