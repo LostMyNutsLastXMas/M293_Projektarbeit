@@ -239,7 +239,7 @@ function renderInspirationen() {
     <div class="inspirations-karte">
       ${item.bild
         ? `<img class="inspirations-bild" src="${item.bild}" alt="${item.titel}" onerror="this.replaceWith(erstellePlaceholder())">`
-        : `<div class="inspirations-bild-placeholder">&#127774;</div>`
+        : `<div class="inspirations-bild-placeholder"></div>`
       }
       <div class="inspirations-inhalt">
         <h2>${item.titel}</h2>
