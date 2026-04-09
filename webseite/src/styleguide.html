@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styleguide – Wochend-Planer</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Styleguide-spezifische Styles */
+    .sg-section {
+      margin-bottom: 3rem;
+    }
+
+    .sg-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sg-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .sg-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    /* Farben */
+    .sg-farbe {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 120px;
+    }
+
+    .sg-farbe-vorschau {
+      width: 100%;
+      height: 80px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .sg-farbe-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .sg-farbe-wert {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    /* Typografie */
+    .sg-typo-block {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+    }
+
+    .sg-typo-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.4rem;
+    }
+
+    /* Abstände */
+    .sg-abstand-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .sg-abstand-vorschau {
+      background: var(--primary-light);
+      border: 1px dashed var(--primary);
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .sg-abstand-label {
+      font-size: 0.85rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .sg-abstand-wert {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* Schatten */
+    .sg-schatten-karte {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      width: 200px;
+      text-align: center;
+    }
+
+    /* Komponenten-Trennlinie */
+    .sg-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* Token-Tabelle */
+    .sg-tabelle {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .sg-tabelle th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    .sg-tabelle td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .sg-tabelle tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sg-tabelle tr:nth-child(even) td {
+      background: var(--bg);
+    }
+
+    code {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo"><img src="../img/logo.png" alt="Wochend-Planer Logo"></a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-wrapper" id="navWrapper">
+      <nav>
+        <a href="index.html">Startseite</a>
+        <a href="kalender.html">Kalender</a>
+        <a href="inspirationen.html">Inspirationen</a>
+        <a href="styleguide.html" class="active">Styleguide</a>
+      </nav>
+      <button class="btn-abmelden" id="btnAbmelden">Abmelden</button>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="beschreibung" style="margin-bottom: 2.5rem;">
+      <h2>Styleguide</h2>
+      <p>Übersicht aller Design-Entscheide, Farben, Schriften und Komponenten des Wochend-Planers.</p>
+    </div>
+
+    <!-- FARBEN -->
+    <div class="sg-section">
+      <h2 class="sg-title">Farben</h2>
+
+      <p class="sg-subtitle">Primärfarben</p>
+      <div class="sg-row" style="margin-bottom: 1.5rem;">
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #2563eb;"></div>
+          <div class="sg-farbe-name">Primary</div>
+          <div class="sg-farbe-wert">#2563eb</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #dbeafe;"></div>
+          <div class="sg-farbe-name">Primary Light</div>
+          <div class="sg-farbe-wert">#dbeafe</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #1d4ed8;"></div>
+          <div class="sg-farbe-name">Primary Dark</div>
+          <div class="sg-farbe-wert">#1d4ed8</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #f59e0b;"></div>
+          <div class="sg-farbe-name">Accent</div>
+          <div class="sg-farbe-wert">#f59e0b</div>
+        </div>
+      </div>
+
+      <p class="sg-subtitle">Hintergrund & Text</p>
+      <div class="sg-row" style="margin-bottom: 1.5rem;">
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #f8fafc;"></div>
+          <div class="sg-farbe-name">Background</div>
+          <div class="sg-farbe-wert">#f8fafc</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #ffffff;"></div>
+          <div class="sg-farbe-name">White</div>
+          <div class="sg-farbe-wert">#ffffff</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #1e293b;"></div>
+          <div class="sg-farbe-name">Text</div>
+          <div class="sg-farbe-wert">#1e293b</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #64748b;"></div>
+          <div class="sg-farbe-name">Text Light</div>
+          <div class="sg-farbe-wert">#64748b</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #e2e8f0;"></div>
+          <div class="sg-farbe-name">Border</div>
+          <div class="sg-farbe-wert">#e2e8f0</div>
+        </div>
+      </div>
+
+      <p class="sg-subtitle">Status-Farben</p>
+      <div class="sg-row">
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #16a34a;"></div>
+          <div class="sg-farbe-name">Erfolg</div>
+          <div class="sg-farbe-wert">#16a34a</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #ef4444;"></div>
+          <div class="sg-farbe-name">Fehler / Absagen</div>
+          <div class="sg-farbe-wert">#ef4444</div>
+        </div>
+        <div class="sg-farbe">
+          <div class="sg-farbe-vorschau" style="background: #fee2e2;"></div>
+          <div class="sg-farbe-name">Fehler Light</div>
+          <div class="sg-farbe-wert">#fee2e2</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+
+    <!-- TYPOGRAFIE -->
+    <div class="sg-section">
+      <h2 class="sg-title">Typografie</h2>
+
+      <p class="sg-subtitle">Schriftarten</p>
+      <table class="sg-tabelle" style="margin-bottom: 1.5rem;">
+        <thead>
+          <tr><th>Verwendung</th><th>Schriftart</th><th>Gewicht</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Überschriften, Logo</td><td>Playfair Display</td><td>700</td></tr>
+          <tr><td>Fliesstext, Buttons, UI</td><td>DM Sans</td><td>400, 500, 700</td></tr>
+        </tbody>
+      </table>
+
+      <p class="sg-subtitle">Schriftgrössen</p>
+      <div class="sg-typo-block">
+        <p style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.25rem;">Seitenüberschrift — 2rem</p>
+        <p class="sg-typo-meta"><code>font-family: Playfair Display</code> · <code>font-size: 2rem</code></p>
+      </div>
+      <div class="sg-typo-block">
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.25rem;">Login-Titel — 1.8rem</p>
+        <p class="sg-typo-meta"><code>font-family: Playfair Display</code> · <code>font-size: 1.8rem</code></p>
+      </div>
+      <div class="sg-typo-block">
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.25rem;">Logo — 1.5rem</p>
+        <p class="sg-typo-meta"><code>font-family: Playfair Display</code> · <code>font-size: 1.5rem</code></p>
+      </div>
+      <div class="sg-typo-block">
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 0.25rem;">Beschreibungstext — 1.1rem. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="sg-typo-meta"><code>font-family: DM Sans</code> · <code>font-size: 1.1rem</code> · <code>line-height: 1.8</code></p>
+      </div>
+      <div class="sg-typo-block">
+        <p style="font-size: 1rem; margin-bottom: 0.25rem;">Standardtext — 1rem. Navigation, Buttons, Formulare.</p>
+        <p class="sg-typo-meta"><code>font-family: DM Sans</code> · <code>font-size: 1rem</code></p>
+      </div>
+      <div class="sg-typo-block">
+        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.25rem;">Kleintext — 0.9rem. Labels, Footer, Metainfos.</p>
+        <p class="sg-typo-meta"><code>font-family: DM Sans</code> · <code>font-size: 0.9rem</code></p>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+
+    <!-- ABSTÄNDE & RADIUS -->
+    <div class="sg-section">
+      <h2 class="sg-title">Abstände & Radius</h2>
+
+      <p class="sg-subtitle">Abstände (Spacing)</p>
+      <div style="margin-bottom: 1.5rem;">
+        <div class="sg-abstand-block">
+          <div class="sg-abstand-vorschau" style="width: 4px;"></div>
+          <span class="sg-abstand-label">XS</span>
+          <span class="sg-abstand-wert">0.25rem · 4px</span>
+        </div>
+        <div class="sg-abstand-block">
+          <div class="sg-abstand-vorschau" style="width: 8px;"></div>
+          <span class="sg-abstand-label">S</span>
+          <span class="sg-abstand-wert">0.5rem · 8px</span>
+        </div>
+        <div class="sg-abstand-block">
+          <div class="sg-abstand-vorschau" style="width: 16px;"></div>
+          <span class="sg-abstand-label">M</span>
+          <span class="sg-abstand-wert">1rem · 16px</span>
+        </div>
+        <div class="sg-abstand-block">
+          <div class="sg-abstand-vorschau" style="width: 24px;"></div>
+          <span class="sg-abstand-label">L</span>
+          <span class="sg-abstand-wert">1.5rem · 24px</span>
+        </div>
+        <div class="sg-abstand-block">
+          <div class="sg-abstand-vorschau" style="width: 32px;"></div>
+          <span class="sg-abstand-label">XL</span>
+          <span class="sg-abstand-wert">2rem · 32px</span>
+        </div>
+        <div class="sg-abstand-block">
+          <div class="sg-abstand-vorschau" style="width: 48px;"></div>
+          <span class="sg-abstand-label">XXL</span>
+          <span class="sg-abstand-wert">3rem · 48px</span>
+        </div>
+      </div>
+
+      <p class="sg-subtitle">Border Radius</p>
+      <div class="sg-row">
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; background: var(--primary-light); border: 1px solid var(--primary); border-radius: 4px; margin: 0 auto 0.5rem;"></div>
+          <div class="sg-farbe-name">Klein</div>
+          <div class="sg-farbe-wert">4px</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; background: var(--primary-light); border: 1px solid var(--primary); border-radius: 8px; margin: 0 auto 0.5rem;"></div>
+          <div class="sg-farbe-name">Mittel</div>
+          <div class="sg-farbe-wert">8px (Inputs)</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; background: var(--primary-light); border: 1px solid var(--primary); border-radius: 12px; margin: 0 auto 0.5rem;"></div>
+          <div class="sg-farbe-name">Standard</div>
+          <div class="sg-farbe-wert">12px (--radius)</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; background: var(--primary-light); border: 1px solid var(--primary); border-radius: 50%; margin: 0 auto 0.5rem;"></div>
+          <div class="sg-farbe-name">Rund</div>
+          <div class="sg-farbe-wert">50% (Buttons)</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+
+    <!-- SCHATTEN -->
+    <div class="sg-section">
+      <h2 class="sg-title">Schatten</h2>
+      <div class="sg-row">
+        <div class="sg-schatten-karte" style="box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);">
+          <p style="font-weight: 600; margin-bottom: 0.3rem;">Shadow</p>
+          <code>--shadow</code>
+          <p class="sg-typo-meta" style="margin-top: 0.5rem;">Karten, Header</p>
+        </div>
+        <div class="sg-schatten-karte" style="box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+          <p style="font-weight: 600; margin-bottom: 0.3rem;">Shadow LG</p>
+          <code>--shadow-lg</code>
+          <p class="sg-typo-meta" style="margin-top: 0.5rem;">Modals, Slider, Kalender</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+
+    <!-- BUTTONS -->
+    <div class="sg-section">
+      <h2 class="sg-title">Buttons</h2>
+
+      <p class="sg-subtitle">Primär</p>
+      <div class="sg-row" style="margin-bottom: 1.5rem; align-items: center;">
+        <button class="btn-termin">+ Termin hinzufügen</button>
+        <button class="btn-login" style="width: auto; padding: 0.8rem 2rem;">Einloggen</button>
+      </div>
+
+      <p class="sg-subtitle">Sekundär & Destruktiv</p>
+      <div class="sg-row" style="align-items: center;">
+        <button class="btn-abmelden">Abmelden</button>
+        <button class="btn-abbrechen" style="padding: 0.7rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif;">Abbrechen</button>
+        <button class="btn-absagen" style="padding: 0.7rem 1.5rem;">Absagen</button>
+        <button class="btn-speichern" style="padding: 0.7rem 1.5rem; border-radius: 8px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif;">Speichern</button>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+
+    <!-- FORMULAR -->
+    <div class="sg-section">
+      <h2 class="sg-title">Formular-Elemente</h2>
+      <div style="max-width: 450px;">
+        <div class="form-group">
+          <label for="sgInput">Textfeld</label>
+          <input type="text" id="sgInput" placeholder="Beispiel-Eingabe">
+        </div>
+        <div class="form-group">
+          <label for="sgPassword">Passwortfeld</label>
+          <input type="password" id="sgPassword" placeholder="••••••••">
+        </div>
+        <div class="form-group">
+          <label for="sgDate">Datum</label>
+          <input type="date" id="sgDate">
+        </div>
+        <div class="form-group">
+          <label for="sgTextarea">Textarea</label>
+          <textarea id="sgTextarea" placeholder="Mehrzeilige Eingabe..." style="width:100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: 'DM Sans', sans-serif; resize: vertical; min-height: 90px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+
+    <!-- KOMPONENTEN -->
+    <div class="sg-section">
+      <h2 class="sg-title">Komponenten</h2>
+
+      <p class="sg-subtitle">Inspirations-Karte</p>
+      <div class="inspirations-karte" style="max-width: 600px; margin-bottom: 2rem;">
+        <div class="inspirations-bild-placeholder"></div>
+        <div class="inspirations-inhalt">
+          <h2>Wandern im Wald</h2>
+          <p>Eine schöne Wanderung durch den Wald mit Freunden. Perfekt für ein Wochenende im Frühling.</p>
+        </div>
+      </div>
+
+      <p class="sg-subtitle">Termin-Marker</p>
+      <div class="sg-row" style="margin-bottom: 2rem;">
+        <div class="termin-marker">Grillabend</div>
+        <div class="termin-marker">Kino</div>
+        <div class="termin-marker">Wanderung</div>
+      </div>
+
+      <p class="sg-subtitle">Navigation-Link (aktiv / inaktiv)</p>
+      <div class="sg-row" style="background: var(--bg-white); padding: 1rem 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow);">
+        <a href="#" class="active" style="font-size: 1rem; font-weight: 500; padding: 0.4rem 0; border-bottom: 2px solid var(--primary); color: var(--primary);">Aktiv</a>
+        <a href="#" style="font-size: 1rem; font-weight: 500; padding: 0.4rem 0; color: var(--text-light); border-bottom: 2px solid transparent;">Inaktiv</a>
+      </div>
+    </div>
+
+    <!-- CSS VARIABLEN -->
+    <div class="sg-section">
+      <h2 class="sg-title">CSS Variablen</h2>
+      <table class="sg-tabelle">
+        <thead>
+          <tr><th>Variable</th><th>Wert</th><th>Verwendung</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--primary</code></td><td>#2563eb</td><td>Buttons, Links, Akzente</td></tr>
+          <tr><td><code>--primary-light</code></td><td>#dbeafe</td><td>Hover-Hintergründe, Focus-Ring</td></tr>
+          <tr><td><code>--primary-dark</code></td><td>#1d4ed8</td><td>Button Hover</td></tr>
+          <tr><td><code>--accent</code></td><td>#f59e0b</td><td>Termin-Marker</td></tr>
+          <tr><td><code>--bg</code></td><td>#f8fafc</td><td>Seiten-Hintergrund</td></tr>
+          <tr><td><code>--bg-white</code></td><td>#ffffff</td><td>Karten, Header, Footer</td></tr>
+          <tr><td><code>--text</code></td><td>#1e293b</td><td>Haupttext</td></tr>
+          <tr><td><code>--text-light</code></td><td>#64748b</td><td>Labels, Metainfos</td></tr>
+          <tr><td><code>--border</code></td><td>#e2e8f0</td><td>Trennlinien, Input-Rahmen</td></tr>
+          <tr><td><code>--shadow</code></td><td>0 1px 3px …</td><td>Karten, Header</td></tr>
+          <tr><td><code>--shadow-lg</code></td><td>0 10px 30px …</td><td>Modals, Slider, Kalender</td></tr>
+          <tr><td><code>--radius</code></td><td>12px</td><td>Karten, Buttons, Modals</td></tr>
+          <tr><td><code>--transition</code></td><td>0.3s ease</td><td>Alle Hover-Animationen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Wochend-Planer. Alle Rechte vorbehalten.
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
