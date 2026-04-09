@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspirationen – Wochend-Planer</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Wochend-Planer</div>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="kalender.html">Kalender</a>
+      <a href="inspirationen.html" class="active">Inspirationen</a>
+    </nav>
+    <button class="btn-abmelden" id="btnAbmelden">Abmelden</button>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main>
+
+    <!-- Seiten-Info + Button -->
+    <div class="inspirationen-header">
+      <p class="inspirationen-erklaerung">Hier sammelst du Ideen und Aktivitäten für dein Wochenende. Füge neue Inspirationen hinzu und behalte den Überblick.</p>
+      <button class="btn-termin" id="btnAktivitaetHinzufuegen">+ Aktivität hinzufügen</button>
+    </div>
+
+    <!-- Aktivitäten-Liste -->
+    <div class="inspirationen-liste" id="inspirationenListe">
+      <!-- Wird dynamisch durch JavaScript befüllt -->
+    </div>
+
+    <!-- Leer-Zustand -->
+    <div class="inspirationen-leer" id="inspirationenLeer">
+      <p>Noch keine Inspirationen vorhanden. Füge deine erste Aktivität hinzu!</p>
+    </div>
+
+  </main>
+
+  <!-- Modal: Aktivität hinzufügen -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h3>Aktivität hinzufügen</h3>
+      <label for="aktivitaetTitel">Titel</label>
+      <input type="text" id="aktivitaetTitel" placeholder="z.B. Wandern im Wald">
+      <label for="aktivitaetBeschreibung">Beschreibung</label>
+      <textarea id="aktivitaetBeschreibung" placeholder="Kurze Beschreibung der Aktivität..."></textarea>
+      <label for="aktivitaetBild">Bild-URL (optional)</label>
+      <input type="url" id="aktivitaetBild" placeholder="https://beispiel.com/bild.jpg">
+      <div class="modal-buttons">
+        <button class="btn-abbrechen" id="btnAbbrechen">Abbrechen</button>
+        <button class="btn-speichern" id="btnSpeichern">Speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Wochend-Planer. Alle Rechte vorbehalten.
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

@@ -445,6 +445,122 @@ main {
   background: var(--border);
 }
 
+/* ===== Inspirationen-Seite ===== */
+.inspirationen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.inspirationen-erklaerung {
+  color: var(--text-light);
+  font-size: 1rem;
+  max-width: 650px;
+}
+
+.inspirationen-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inspirations-karte {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.inspirations-karte:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.inspirations-bild {
+  width: 160px;
+  min-height: 130px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.inspirations-bild-placeholder {
+  width: 160px;
+  min-height: 130px;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.inspirations-inhalt {
+  padding: 1.2rem 1.2rem 1.2rem 0;
+  flex: 1;
+}
+
+.inspirations-inhalt h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.inspirations-inhalt p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.inspirationen-leer {
+  text-align: center;
+  color: var(--text-light);
+  padding: 4rem 2rem;
+  display: none;
+}
+
+.inspirationen-leer.sichtbar {
+  display: block;
+}
+
+.modal textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  transition: var(--transition);
+  resize: vertical;
+  min-height: 90px;
+}
+
+.modal textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+@media (max-width: 768px) {
+  .inspirationen-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inspirations-bild,
+  .inspirations-bild-placeholder {
+    width: 110px;
+    min-height: 100px;
+  }
+}
+
 /* ===== Login-Seite ===== */
 .login-main {
   display: flex;

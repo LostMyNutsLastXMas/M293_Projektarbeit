@@ -168,6 +168,86 @@ function terminSpeichern() {
 }
 
 
+// ===== INSPIRATIONEN =====
+
+let inspirationen = JSON.parse(localStorage.getItem('inspirationen')) || [];
+
+function initInspirationen() {
+  const liste = document.getElementById('inspirationenListe');
+  if (!liste) return;
+
+  renderInspirationen();
+
+  document.getElementById('btnAktivitaetHinzufuegen').addEventListener('click', () => {
+    document.getElementById('modalOverlay').classList.add('active');
+  });
+
+  document.getElementById('btnAbbrechen').addEventListener('click', schliesseInspirationenModal);
+
+  document.getElementById('modalOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) schliesseInspirationenModal();
+  });
+
+  document.getElementById('btnSpeichern').addEventListener('click', aktivitaetSpeichern);
+}
+
+function renderInspirationen() {
+  const liste = document.getElementById('inspirationenListe');
+  const leer = document.getElementById('inspirationenLeer');
+
+  if (inspirationen.length === 0) {
+    liste.innerHTML = '';
+    leer.classList.add('sichtbar');
+    return;
+  }
+
+  leer.classList.remove('sichtbar');
+  liste.innerHTML = inspirationen.map(item => `
+    <div class="inspirations-karte">
+      ${item.bild
+        ? `<img class="inspirations-bild" src="${item.bild}" alt="${item.titel}" onerror="this.replaceWith(erstellePlaceholder())">`
+        : `<div class="inspirations-bild-placeholder">&#127774;</div>`
+      }
+      <div class="inspirations-inhalt">
+        <h2>${item.titel}</h2>
+        <p>${item.beschreibung}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function erstellePlaceholder() {
+  const div = document.createElement('div');
+  div.className = 'inspirations-bild-placeholder';
+  div.innerHTML = '&#127774;';
+  return div;
+}
+
+function schliesseInspirationenModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.getElementById('aktivitaetTitel').value = '';
+  document.getElementById('aktivitaetBeschreibung').value = '';
+  document.getElementById('aktivitaetBild').value = '';
+}
+
+function aktivitaetSpeichern() {
+  const titel = document.getElementById('aktivitaetTitel').value.trim();
+  const beschreibung = document.getElementById('aktivitaetBeschreibung').value.trim();
+  const bild = document.getElementById('aktivitaetBild').value.trim();
+
+  if (!titel) {
+    alert('Bitte einen Titel eingeben.');
+    return;
+  }
+
+  inspirationen.push({ titel, beschreibung, bild });
+  localStorage.setItem('inspirationen', JSON.stringify(inspirationen));
+
+  schliesseInspirationenModal();
+  renderInspirationen();
+}
+
+
 // ===== LOGIN =====
 
 const LOGIN_BENUTZER = 'lucas';
@@ -218,4 +298,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAbmelden();
   initSlider();
   initKalender();
+  initInspirationen();
 });
