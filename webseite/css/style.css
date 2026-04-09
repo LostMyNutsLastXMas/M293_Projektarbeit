@@ -579,19 +579,6 @@ main {
   box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-@media (max-width: 768px) {
-  .inspirationen-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .inspirations-bild,
-  .inspirations-bild-placeholder {
-    width: 110px;
-    min-height: 100px;
-  }
-}
-
 /* ===== Login-Seite ===== */
 .login-main {
   display: flex;
@@ -765,36 +752,201 @@ footer {
   margin-top: auto;
 }
 
+/* ===== Hamburger ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  z-index: 110;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.hamburger.offen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.offen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.offen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   header {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    position: relative;
   }
 
-  .logo {
-    font-size: 1.2rem;
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    background: var(--bg-white);
+    border-top: 1px solid var(--border);
+    padding: 1rem 0 0.5rem;
+  }
+
+  .nav-wrapper.offen {
+    display: flex;
   }
 
   nav {
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
   }
 
+  nav a {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+    border-left: none;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  .btn-abmelden {
+    margin-top: 0.75rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logo img {
+    height: 52px;
+  }
+
+  main {
+    padding: 1.25rem 1rem;
+  }
+
+  /* Startseite */
   .hero-slider {
-    height: 250px;
+    height: 200px;
   }
 
+  .slide {
+    font-size: 1.1rem;
+    padding: 0 3rem;
+    text-align: center;
+  }
+
+  .beschreibung h2 {
+    font-size: 1.5rem;
+  }
+
+  .beschreibung p {
+    font-size: 1rem;
+  }
+
+  /* Kalender */
   .kalender-header {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
   }
 
+  .kalender-nav .monat-label {
+    font-size: 1rem;
+    min-width: 140px;
+  }
+
   .kalender-tag {
-    min-height: 60px;
+    min-height: 50px;
+    padding: 0.3rem;
   }
 
   .kalender-wochentage div {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.1rem;
+  }
+
+  .tag-nummer {
     font-size: 0.75rem;
-    padding: 0.5rem 0.2rem;
+  }
+
+  .termin-marker {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  /* Inspirationen */
+  .inspirationen-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inspirations-karte {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .inspirations-bild,
+  .inspirations-bild-placeholder {
+    width: 100%;
+    min-height: 160px;
+  }
+
+  .inspirations-inhalt {
+    padding: 1rem;
+  }
+
+  /* Modal */
+  .modal {
+    padding: 1.5rem;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider {
+    height: 160px;
+  }
+
+  .kalender-tag {
+    min-height: 40px;
+  }
+
+  .kalender-wochentage div {
+    font-size: 0.6rem;
+    padding: 0.4rem 0;
+  }
+
+  .termin-marker {
+    display: none;
+  }
+
+  .login-card {
+    padding: 1.5rem;
   }
 }

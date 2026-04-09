@@ -341,6 +341,25 @@ function initLogin() {
   });
 }
 
+function initHamburger() {
+  const hamburger = document.getElementById('hamburger');
+  const navWrapper = document.getElementById('navWrapper');
+  if (!hamburger) return;
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('offen');
+    navWrapper.classList.toggle('offen');
+  });
+
+  // Menü schliessen wenn ein Nav-Link geklickt wird
+  navWrapper.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('offen');
+      navWrapper.classList.remove('offen');
+    });
+  });
+}
+
 function initAbmelden() {
   const btn = document.getElementById('btnAbmelden');
   if (!btn) return;
@@ -364,6 +383,7 @@ function pruefLogin() {
 document.addEventListener('DOMContentLoaded', () => {
   pruefLogin();
   initLogin();
+  initHamburger();
   initAbmelden();
   initSlider();
   initKalender();
