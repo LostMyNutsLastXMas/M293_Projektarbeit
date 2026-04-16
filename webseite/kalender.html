@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalender – Wochend-Planer</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="Wochend-Planer Logo"></a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-wrapper" id="navWrapper">
+      <nav>
+        <a href="index.html">Startseite</a>
+        <a href="kalender.html" class="active">Kalender</a>
+        <a href="inspirationen.html">Inspirationen</a>
+        <a href="styleguide.html">Styleguide</a>
+      </nav>
+      <button class="btn-abmelden" id="btnAbmelden">Abmelden</button>
+    </div>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main>
+
+    <!-- Kalender Header -->
+    <div class="kalender-header">
+      <button class="btn-termin" id="btnTerminHinzufuegen">+ Termin hinzufügen</button>
+      <div class="kalender-nav">
+        <button id="btnVorherigerMonat" aria-label="Vorheriger Monat">&#8592;</button>
+        <span class="monat-label" id="monatLabel">April 2026</span>
+        <button id="btnNaechsterMonat" aria-label="Nächster Monat">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Kalender -->
+    <div class="kalender-container">
+      <div class="kalender-wochentage">
+        <div>Mo</div>
+        <div>Di</div>
+        <div>Mi</div>
+        <div>Do</div>
+        <div>Fr</div>
+        <div>Sa</div>
+        <div>So</div>
+      </div>
+      <div class="kalender-tage" id="kalenderTage">
+        <!-- Wird dynamisch durch JavaScript befüllt -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal: Termin Detail / Absagen -->
+  <div class="modal-overlay" id="detailModalOverlay">
+    <div class="modal">
+      <h3 id="detailTitel"></h3>
+      <p class="detail-datum" id="detailDatum"></p>
+      <p class="detail-zeit" id="detailZeit"></p>
+      <div class="modal-buttons">
+        <button class="btn-abbrechen" id="btnDetailSchliessen">Schliessen</button>
+        <button class="btn-absagen" id="btnAbsagen">Absagen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Termin hinzufügen -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h3>Termin hinzufügen</h3>
+      <label for="terminDatum">Datum</label>
+      <input type="date" id="terminDatum">
+      <label for="terminTitel">Titel</label>
+      <input type="text" id="terminTitel" placeholder="z.B. Wandern im Wald">
+      <label for="terminZeit">Uhrzeit</label>
+      <input type="time" id="terminZeit">
+      <div class="modal-buttons">
+        <button class="btn-abbrechen" id="btnAbbrechen">Abbrechen</button>
+        <button class="btn-speichern" id="btnSpeichern">Speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Wochend-Planer. Alle Rechte vorbehalten.
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

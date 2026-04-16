@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wochend-Planer</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="Wochend-Planer Logo"></a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-wrapper" id="navWrapper">
+      <nav>
+        <a href="index.html" class="active">Startseite</a>
+        <a href="kalender.html">Kalender</a>
+        <a href="inspirationen.html">Inspirationen</a>
+        <a href="styleguide.html">Styleguide</a>
+      </nav>
+      <button class="btn-abmelden" id="btnAbmelden">Abmelden</button>
+    </div>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main>
+
+    <!-- Hero Slider -->
+    <div class="hero-slider">
+      <div class="slide active" style="background-image: url('img/Screenshot 2026-04-09 at 11.01.09.png');"></div>
+      <div class="slide" style="background-image: url('img/Screenshot 2026-04-09 at 11.03.14.png');"></div>
+      <div class="slide" style="background-image: url('img/Screenshot 2026-04-09 at 11.05.47.png');"></div>
+      <div class="slide" style="background-image: url('img/Screenshot 2026-04-09 at 11.06.48.png');"></div>
+      <button class="slider-btn prev" aria-label="Vorheriges Bild">&#8592;</button>
+      <button class="slider-btn next" aria-label="Nächstes Bild">&#8594;</button>
+    </div>
+
+    <!-- Beschreibung -->
+    <section class="beschreibung">
+      <h2>Erklärung der Webseite:</h2>
+      <p>
+        Grund für die Entstehung dieser Interseite hat sich aus folgendem ergeben.
+        Seitdem ich von Zuhause in die Schweiz weggezogen bin sehe ich meine Freunde nur noch am Wochende.
+        Es hat sich aber herausgestellt, dass die Wochend-Planungen mit meinen Freunden in der Vergangenheit etwas 
+        kompliziert getaltet haben. Entweder wussten wir nicht was wir machen sollten oder wann wir uns treffen sollten
+        oder es hatte niemand Zeit. Um dies in Zukunft besser koordinieren zu können, habe ich diese Internetseite erstellt.
+        Hier können sich meine Freunde und ich eintragen was wir machen können bzw. wann wir es machen können. 
+      </p>
+    </section>
+
+    <!-- Videos -->
+    <section class="videos-section">
+      <h2 class="videos-titel">Wo wir schon überall waren:</h2>
+      <div class="videos-grid">
+        <div class="video-karte">
+          <h3 class="video-name">Japan</h3>
+          <video controls>
+            <source src="img/Japan.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-karte">
+          <h3 class="video-name">Monaco</h3>
+          <video controls>
+            <source src="img/Monaco.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-karte">
+          <h3 class="video-name">Stuttgart</h3>
+          <video controls>
+            <source src="img/Stuttgart.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Wochend-Planer. Alle Rechte vorbehalten.
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
